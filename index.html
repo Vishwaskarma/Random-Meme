@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      <h2>Random Memes &#128514;</h2>
+      <div class="main_image_container">
+        <img src="./img/demo.jpg"  alt="meme" id="meme_image">
+        <h4 class="auth"></h4>
+        <p class="tit"></p>
+     
+
+
+      </div>
+      <button class="get_image" onClick="get_image_memes()">Next</button>
+    </div>
+    <script>
+      let btn=document.querySelector('click',get_image_memes());
+      let auth=document.querySelector(".auth");
+        let tit=document.querySelector(".tit")
+      function updateDetail(a,b,c){
+        let meme_img=document.querySelector("#meme_image");
+       
+        meme_img.setAttribute("src",a)
+        auth.innerHTML=b;
+        tit.innerHTML=c
+
+       
+
+      }
+     function  get_image_memes(){
+      let image_cont=document.querySelector("#meme_image")
+      let getres=fetch('https://meme-api.com/gimme').then(res=>res.json()).then(data=>updateDetail(data.url,data.author,data.title))
+     }
+
+
+
+    </script>
+  </body>
+</html>
